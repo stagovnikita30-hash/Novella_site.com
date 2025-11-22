@@ -37,7 +37,7 @@ body {
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
   transition: transform 0.3s ease;
-  width: 48%; /* Чтобы две карточки в ряд */
+  width: 48%;
   min-width: 300px;
 }
 
@@ -47,8 +47,11 @@ body {
 
 .video-container {
   background: #000;
+  position: relative;
+  cursor: pointer;
 }
 
+.video-container canvas,
 .video-container video {
   width: 100%;
   display: block;
@@ -133,10 +136,10 @@ body {
 
   <!-- Обзор 1: Зайчик -->
   <div class="review-card">
-    <div class="video-container">
-      <video controls preload="metadata">
+    <div class="video-container" data-video="videos/Zaichik.mp4">
+      <canvas></canvas>
+      <video controls style="display:none;">
         <source src="videos/Zaichik.mp4" type="video/mp4">
-        Ваш браузер не поддерживает видео.
       </video>
     </div>
     <div class="review-body">
@@ -152,10 +155,10 @@ body {
 
   <!-- Обзор 2: Бесконечное лето -->
   <div class="review-card">
-    <div class="video-container">
-      <video controls preload="metadata">
+    <div class="video-container" data-video="videos/Beskonechnoe.mp4">
+      <canvas></canvas>
+      <video controls style="display:none;">
         <source src="videos/Beskonechnoe.mp4" type="video/mp4">
-        Ваш браузер не поддерживает видео.
       </video>
     </div>
     <div class="review-body">
@@ -170,6 +173,34 @@ body {
   </div>
 
 </div>
+
+<script>
+// Показ 50-го кадра на canvas
+document.querySelectorAll('.video-container').forEach(container => {
+  const video = container.querySelector('video');
+  const canvas = container.querySelector('canvas');
+  const ctx = canvas.getContext('2d');
+
+  video.addEventListener('loadedmetadata', () => {
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+
+    // Перемещаемся на 50-й кадр, приблизительно
+    const fps = 30; // Если видео 30fps
+    video.currentTime = 50 / fps;
+  });
+
+  video.addEventListener('seeked', () => {
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+  });
+
+  container.addEventListener('click', () => {
+    canvas.style.display = 'none';
+    video.style.display = 'block';
+    video.play();
+  });
+});
+</script>
 
 </body>
 </html>
