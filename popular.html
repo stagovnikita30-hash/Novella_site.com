@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ТОП 10 Визуальных Новелл</title>
+  <link rel="stylesheet" href="popular.css">
+  <style>
+    h2 {
+      text-align: center;
+      color: #ff99ff;
+      font-size: 32px;
+      margin-top: 30px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    }
+
+    .video-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 30px;
+      background-color: rgba(26,26,26,0.95);
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 1000px;
+      margin: 20px auto;
+      flex-wrap: wrap;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <ul>
+      <li><a href="#">Жанры ▼</a>
+        <ul>
+          <li><a href="#">Романтика</a></li>
+          <li><a href="#">Мистика</a></li>
+          <li><a href="#">Фэнтези</a></li>
+          <li><a href="#">Ужасы</a></li>
+          <li><a href="#">Комедия</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Платформы ▼</a>
+        <ul>
+          <li><a href="#">ПК</a></li>
+          <li><a href="#">Android</a></li>
+          <li><a href="#">iOS</a></li>
+          <li><a href="#">Консоли</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Разработчики ▼</a>
+        <ul>
+          <li><a href="#">Key</a></li>
+          <li><a href="#">Nitroplus</a></li>
+          <li><a href="#">Type-Moon</a></li>
+          <li><a href="#">VisualArt’s</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <h2>ТОП 10 Визуальных Новелл</h2>
+
+  <div class="video-container">
+    <div class="video-left">
+      <video controls>
+        <source src="10 top.mp4" type="video/mp4">
+      </video>
+      <div class="video-description">
+        <h3>ТОП 10 Лучших Визуальных Новелл</h3>
+      </div>
+    </div>
+
+    <div class="video-right">
+      <div class="circle-animation"></div>
+      <a href="https://www.youtube.com/watch?v=EdsIXWA08mk" target="_blank" class="youtube-btn">Смотреть на YouTube</a>
+    </div>
+  </div>
+
+</body>
+</html>

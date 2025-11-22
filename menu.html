@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мир визуальных новелл</title>
+<link rel="stylesheet" href="menu.css">
+</head>
+<body>
+
+<div id="menu">
+    <button onclick="changePage('home.html', this)">Главная</button>
+    <button onclick="changePage('about.html', this)">О жанре</button>
+    <button onclick="changePage('popular.html', this)">Популярные игры</button>
+    <button onclick="changePage('reviews.html', this)">Обзоры</button>
+    <button onclick="changePage('contacts.html', this)">Контакты</button>
+</div>
+
+<iframe id="content" src="home.html"></iframe>
+
+<script>
+function changePage(page, btn) {
+    document.getElementById('content').src = page;
+
+    // Снимаем класс active со всех кнопок
+    document.querySelectorAll('#menu button').forEach(b => b.classList.remove('active'));
+    // Добавляем класс active к текущей
+    btn.classList.add('active');
+}
+
+// Устанавливаем активную кнопку при загрузке страницы (Главная)
+document.querySelector('#menu button').classList.add('active');
+</script>
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: url('https://avatars.mds.yandex.net/i?id=9af10c0cdb36fb43f638cb0062464700_l-4766993-images-thumbs&n=13') no-repeat center center fixed;
+  background-size: cover;
+  color: #eee;
+}
+
+.page-title {
+  text-align: center;
+  color: #ff99ff;
+  margin: 30px 0;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.review-card {
+  background: rgba(34, 34, 34, 0.95);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+}
+
+.video-container {
+  width: 100%;
+  background: #000;
+}
+
+.video-container iframe {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
+.review-body {
+  padding: 20px;
+}
+
+.review-body h3 {
+  margin: 0 0 10px;
+  color: #ff99ff;
+  font-size: 22px;
+}
+
+.review-body p {
+  color: #ddd;
+  line-height: 1.6;
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+/* ==== КНОПКА YOUTUBE С АНИМАЦИЕЙ ==== */
+.youtube-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+  padding: 10px 18px;
+  background: #ff0000;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.youtube-btn:hover {
+  background: #cc0000;
+  transform: scale(1.05);
+}
+
+.youtube-btn .circle {
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border-radius: 50%;
+  animation: bounce 1s infinite ease-in-out;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(-6px);
+    opacity: 1;
+  }
+}
+
+/* ==== АДАПТИВНОСТЬ ==== */
+
+/* Планшет */
+@media (max-width: 992px) {
+  .review-body h3 {
+    font-size: 20px;
+  }
+  .review-body p {
+    font-size: 14px;
+  }
+}
+
+/* Мобильный */
+@media (max-width: 600px) {
+  .reviews-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .review-body {
+    padding: 15px;
+  }
+
+  .review-body h3 {
+    font-size: 18px;
+  }
+
+  .review-body p {
+    font-size: 13px;
+  }
+
+  .youtube-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}

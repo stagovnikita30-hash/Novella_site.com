@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Популярные визуальные новеллы</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      background: url('https://static.packt-cdn.com/products/9781789538335/graphics/assets/84505b3a-f40c-4530-b94b-c74e0cd2f5ef.png') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 28px;
+      color: #ff66cc;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    .card {
+      perspective: 1000px;
+      width: 100%;
+      min-height: 450px;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .card-front {
+      background: #222;
+    }
+
+    .card-front img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .card-back {
+      background: #333;
+      color: #ffccff;
+      transform: rotateY(180deg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .card.flip .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-body {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: auto;
+      flex: 1;
+    }
+
+    .card-body h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      color: #ff99ff;
+    }
+
+    .card-body p {
+      font-size: 14px;
+      line-height: 1.4;
+      color: #ccc;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+      background-color: #0055ff;
+      animation: policeLight 2s linear infinite alternate;
+      margin-top: 10px;
+    }
+
+    @keyframes policeLight {
+      0%   { background-color: #0055ff; }
+      50%  { background-color: #ff0000; }
+      100% { background-color: #0055ff; }
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 15px rgba(255,0,0,0.7), 0 6px 15px rgba(0,0,255,0.7);
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px 0;
+      background: #222;
+      color: #aaa;
+      margin-top: 20px;
+    }
+
+    .info-section {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background: rgba(20, 20, 20, 0.8);
+      border-radius: 12px;
+      color: #eee;
+    }
+
+    .info-section h2 {
+      text-align: center;
+      color: #ff66cc;
+      margin-bottom: 20px;
+    }
+
+    .info-section p {
+      line-height: 1.6;
+      color: #ccc;
+    }
+
+    .info-end {
+      margin-top: 30px;
+      font-weight: bold;
+      color: #ffccff;
+      text-align: center;
+    }
+
+    .center-img {
+      display: block;
+      margin: 15px auto;
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    }
+
+    .new-novels {
+      max-width: 1600px;
+      margin: 50px auto;
+      padding: 20px;
+      background: rgba(30,30,30,0.85);
+      border-radius: 12px;
+    }
+
+    .new-novels h2 {
+      text-align: center;
+      color: #ff66cc;
+      margin-bottom: 25px;
+    }
+
+    @media (max-width: 1200px) {
+      .card-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+    }
+
+    @media (max-width: 900px) {
+      .card-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+      .card {
+        min-height: 420px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+      .card {
+        min-height: 400px;
+      }
+      .card-body h3 {
+        font-size: 18px;
+      }
+      .card-body p {
+        font-size: 13px;
+      }
+      .btn {
+        padding: 10px 16px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main id="content">
+
+    <h2>Популярные визуальные новеллы</h2>
+
+    <div class="card-grid">
+
+      <!-- Steins;Gate -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="https://cdn1.ozone.ru/s3/multimedia-3/6627453519.jpg" />
+            <div class="card-body">
+              <h3>Steins;Gate</h3>
+              <p>Научно-фантастическая история о времени, дружбе и цене знаний.</p>
+              <button class="btn flip-btn">Подробнее</button>
+            </div>
+          </div>
+          <div class="card-back">
+            <div class="card-body">
+              <h3>Steins;Gate</h3>
+              <p>История о группе молодых людей, случайно создавших устройство для отправки сообщений в прошлое.</p>
+              <button class="btn flip-btn">Назад</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Clannad -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="https://i.pinimg.com/originals/7d/0f/36/7d0f36d6960056388224e7baf8f0e711.jpg" />
+            <div class="card-body">
+              <h3>Clannad</h3>
+              <p>Трогательная история о семье, дружбе и взрослении.</p>
+              <button class="btn flip-btn">Подробнее</button>
+            </div>
+          </div>
+          <div class="card-back">
+            <div class="card-body">
+              <h3>Clannad</h3>
+              <p>Эмоциональная драма о школьной жизни и решениях, меняющих судьбу семьи героя.</p>
+              <button class="btn flip-btn">Назад</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DDLC -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="https://i.ytimg.com/vi/-jeYT30oAYg/maxresdefault.jpg" />
+            <div class="card-body">
+              <h3>Doki Doki Literature Club!</h3>
+              <p>Милая новелла, превращающаяся в психологический опыт.</p>
+              <button class="btn flip-btn">Подробнее</button>
+            </div>
+          </div>
+          <div class="card-back">
+            <div class="card-body">
+              <h3>Doki Doki Literature Club!</h3>
+              <p>Школьный клуб литературы, скрывающий мрачные тайны и неожиданные развилки.</p>
+              <button class="btn flip-btn">Назад</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Зайчик -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="https://habrastorage.org/r/w1560/getpro/habr/upload_files/bd8/3f4/335/bd83f43356441b487670e6db7e888eda.jpeg" />
+            <div class="card-body">
+              <h3>Зайчик</h3>
+              <p>Мистическая новелла с атмосферой хоррора.Очень страшно за гг.</p>
+              <button class="btn flip-btn">Подробнее</button>
+            </div>
+          </div>
+          <div class="card-back">
+            <div class="card-body">
+              <h3>Зайчик</h3>
+              <p>Пугающая история о детских страхах, советской атмосфере и скрытой мистике.</p>
+              <button class="btn flip-btn">Назад</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Инфо блок -->
+    <section class="info-section">
+      <h2>Будущее визуальных новелл</h2>
+      <p>Каждый год выходят новые визуальные новеллы, и многие серии продолжают развиваться.</p>
+
+      <h3>Steins;Gate — что дальше?</h3>
+      <div style="text-align: center;">
+        <img src="Steins Gate.jpg" alt="Steins;Gate" class="center-img" />
+      </div>
+      <p>Существуют продолжения вроде <strong>Steins;Gate 0</strong>, а также подтверждён новый проект во вселенной Science Adventure.</p>
+
+      <h3>Clannad — новые проекты Key</h3>
+      <div style="text-align: center;">
+        <img src="CLANNAD.jpg" alt="Clannad" class="center-img" />
+      </div>
+      <p>Прямого продолжения нет, но есть расширения вроде <strong>Tomoyo After</strong>, а студия Key работает над новыми драмами.</p>
+
+      <h3>Doki Doki Literature Club — продолжение?</h3>
+      <div style="text-align: center;">
+        <img src="Doki Doki Literature Club.jpg" alt="DDLC" class="center-img" />
+      </div>
+      <p>Автор работает над новой игрой в похожей атмосфере, но сиквела пока нет.</p>
+
+      <h3>Зайчик — продолжение</h3>
+      <p>Игра готова на 88%, продолжение выйдет 5 декабря 2025 года.</p>
+      <div style="text-align: center; margin-top: 20px;">
+        <img src="wowowo.jpeg" alt="Зайчик" class="center-img" />
+      </div>
+
+      <p class="info-end">Индустрия растёт, и впереди много интересных релизов.</p>
+    </section>
+
+    <!-- Новые визуальные новеллы -->
+    <section class="new-novels">
+      <h2>Новые визуальные новеллы</h2>
+      <div class="card-grid">
+
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="Until Then.webp" />
+              <div class="card-body">
+                <h3>Until Then</h3>
+                <p>Эмоциональная история о старшекласснике, столкнувшемся с исчезновениями и тайнами прошлого.</p>
+                <button class="btn flip-btn">Подробнее</button>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="card-body">
+                <h3>Until Then</h3>
+                <p>Игра сочетает повседневность, мистику и сюжетные развилки, зависящие от решений игрока.</p>
+                <button class="btn flip-btn">Назад</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="MiSide Your Daily Companion.webp" />
+              <div class="card-body">
+                <h3>MiSide Your Daily Companion</h3>
+                <p>Психологический хоррор о мире внутри приложения с аниме-девушкой Митой.</p>
+                <button class="btn flip-btn">Подробнее</button>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="card-body">
+                <h3>MiSide: Your Daily Companion</h3>
+                <p>Сюрреализм, аномальные локации и скрытые личности Миты раскрывают тайну симуляции.</p>
+                <button class="btn flip-btn">Назад</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="Afterlove EP.webp" />
+              <div class="card-body">
+                <h3>Afterlove EP</h3>
+                <p>История музыканта, который за 28 дней пытается восстановить себя и завершить новую композицию.</p>
+                <button class="btn flip-btn">Подробнее</button>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="card-body">
+                <h3>Afterlove EP</h3>
+                <p>Новелла сочетает роман, исследование Джакарты и музыкальные элементы.</p>
+                <button class="btn flip-btn">Назад</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Мир визуальных новелл — учебный проект.</p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.flip-btn').forEach(button => {
+      button.addEventListener('click', function () {
+        const card = this.closest('.card');
+        card.classList.toggle('flip');
+      });
+    });
+  </script>
+</body>
+</html>
+

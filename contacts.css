@@ -1,0 +1,173 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #111;
+  color: #eee;
+}
+
+/* Заголовок */
+.page-title {
+  text-align: center;
+  color: #ff99ff;
+  margin: 30px 0;
+  font-size: 28px;
+}
+
+/* Контейнер */
+.contacts-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+}
+
+/* Карточки */
+.contact-info,
+.socials {
+  background: rgba(34, 34, 34, 0.9);
+  border-radius: 16px;
+  padding: 25px;
+  flex: 1 1 300px;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+  min-width: 280px;
+}
+
+.contact-info h3,
+.socials h3 {
+  color: #ff99ff;
+  margin-bottom: 10px;
+}
+
+.contact-info a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.contact-info a:hover {
+  color: #ff66cc;
+}
+
+/* Соцсети */
+.social-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+  transition: transform 0.2s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.social-btn i {
+  font-size: 20px;
+}
+
+.social-btn::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.3);
+  animation: pulse 1.5s infinite;
+}
+
+.social-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+/* Цвета для соцсетей */
+.vk { background: linear-gradient(45deg,#4c75a3,#88b4d0);}
+.insta { background: linear-gradient(45deg,#f58529,#dd2a7b);}
+.telegram { background: linear-gradient(45deg,#0088cc,#33bbff);}
+.discord { background: linear-gradient(45deg,#7289da,#99aaff);}
+.youtube { background: linear-gradient(45deg,#ff0000,#ff5555);}
+.whatsapp { background: linear-gradient(45deg,#25d366,#6fffb0);}
+
+/* Анимация */
+@keyframes pulse {
+  0% { transform: translateY(-50%) scale(1);}
+  50% { transform: translateY(-50%) scale(1.5);}
+  100% { transform: translateY(-50%) scale(1);}
+}
+
+/* ----------- АДАПТИВНОСТЬ ----------- */
+
+/* Планшеты (до 900px) */
+@media (max-width: 900px) {
+  .contacts-container {
+    gap: 25px;
+    padding: 15px;
+  }
+
+  .page-title {
+    font-size: 24px;
+  }
+
+  .contact-info, .socials {
+    flex: 1 1 45%;
+  }
+}
+
+/* Телефоны (до 600px) */
+@media (max-width: 600px) {
+  .contacts-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .page-title {
+    font-size: 22px;
+    margin: 20px 0;
+  }
+
+  .contact-info, .socials {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .social-btn {
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+
+  .social-btn i {
+    font-size: 18px;
+  }
+}
+
+/* Маленькие телефоны (до 400px) */
+@media (max-width: 400px) {
+  .page-title {
+    font-size: 20px;
+  }
+
+  .contact-info, .socials {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .social-btn {
+    font-size: 13px;
+  }
+}
